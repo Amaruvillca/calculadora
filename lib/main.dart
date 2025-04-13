@@ -3,6 +3,7 @@ import 'package:calculadora/presentation/screen/calculadora/calculadora_screen.d
 import 'package:calculadora/providers/calculadora_probider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:calculadora/conf/router/app_router.dart';
 
 void main() => runApp(
   const ProviderScope(
@@ -19,11 +20,12 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context,  WidgetRef ref) {
     final isDarkMode = ref.watch(isDark);
     final colorseleccionado = ref.watch(seleccionarThema);
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       theme: AppTheme(isDarck: isDarkMode,seleccionThema: colorseleccionado).appTheme(),
       title: 'Calculadora',
       debugShowCheckedModeBanner: false,
-      home: CalculadoraScreen(),
+      
     );
   }
 }
